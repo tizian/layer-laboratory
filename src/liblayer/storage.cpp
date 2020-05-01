@@ -475,6 +475,7 @@ BSDFStorage::sample_elevation_angle(float mu_i, float phi_i,
         t = sample / f0;
 
     float a = 0, b = 1, value, deriv;
+    int iterations = 0;
     do {
         /* Fall back to a bisection step when t is out of bounds */
         if (!(t > a && t < b)) t = 0.5f * (a + b);
@@ -486,8 +487,7 @@ BSDFStorage::sample_elevation_angle(float mu_i, float phi_i,
         value -= sample;
 
         /* Stop the iteration if converged */
-        // if (std::abs(value) <= std::abs(eps_value) || std::abs(b - a) <= std::abs(eps_domain)) break;
-        if (abs(value) <= eps_value || (b - a) <= eps_domain) break;
+        if (abs(value) <= eps_value || (b - a) <= eps_domain || iterations > 10000) break;
 
         /* Update the bisection bounds */
         if (value <= 0)
@@ -497,6 +497,7 @@ BSDFStorage::sample_elevation_angle(float mu_i, float phi_i,
 
         /* Perform a Newton step */
         t -= value / deriv;
+        iterations++;
     } while (true);
 
     /* Return the value and PDF if requested */

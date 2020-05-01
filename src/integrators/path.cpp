@@ -92,7 +92,7 @@ both direct and indirect illumination.
 template <typename Float, typename Spectrum>
 class PathIntegrator : public MonteCarloIntegrator<Float, Spectrum> {
 public:
-    MTS_IMPORT_BASE(MonteCarloIntegrator, m_max_depth, m_rr_depth)
+    MTS_IMPORT_BASE(MonteCarloIntegrator, m_max_depth, m_rr_depth, m_hide_emitters)
     MTS_IMPORT_TYPES(Scene, Sampler, Medium, Emitter, EmitterPtr, BSDF, BSDFPtr)
 
     PathIntegrator(const Properties &props) : Base(props) { }
@@ -118,8 +118,10 @@ public:
         // ---------------------- First intersection ----------------------
 
         SurfaceInteraction3f si = scene->ray_intersect(ray, active);
-        Mask valid_ray = si.is_valid();
+        Mask valid_ray = !m_hide_emitters && neq(scene->environment(), nullptr);
         EmitterPtr emitter = si.emitter(scene);
+
+        valid_ray |= si.is_valid();
 
         for (int depth = 1;; ++depth) {
 
@@ -207,7 +209,7 @@ public:
             si = std::move(si_bsdf);
         }
 
-        return { result, valid_ray };
+        return { result & valid_ray, valid_ray };
     }
 
     //! @}

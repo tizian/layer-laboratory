@@ -15,6 +15,8 @@ add_plugin(thindielectric  thindielectric.cpp)
 add_plugin(twosided        twosided.cpp)
 add_plugin(polarizer       polarizer.cpp)
 add_plugin(retarder        retarder.cpp)
+add_plugin(fourier         fourier.cpp)
+add_plugin(tangentrotation tangentrotation.cpp)
 
 # Register the test directory
 add_tests(${CMAKE_CURRENT_SOURCE_DIR}/tests)

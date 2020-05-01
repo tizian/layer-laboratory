@@ -104,6 +104,7 @@ void bind_spline(py::module &m) {
         .def("eval_spline_weights",
             vectorize([](ScalarFloat min, ScalarFloat max, uint32_t size, Float x) {
                 py::array_t<Float, 4> weight;
+                weight.resize({4});
                 auto [result, offset] = spline::eval_spline_weights(
                     min, max, size, x, weight.mutable_data());
                 return std::make_tuple(result, offset, weight);
@@ -112,6 +113,7 @@ void bind_spline(py::module &m) {
         .def("eval_spline_weights",
             vectorize([](const py::array_t<ScalarFloat> &nodes, Float x) {
                 py::array_t<Float, 4> weight;
+                weight.resize({4});
                 auto [result, offset] = spline::eval_spline_weights(
                     nodes.data(), (uint32_t) nodes.shape(0), x, weight.mutable_data());
                 return std::make_tuple(result, offset, weight);
