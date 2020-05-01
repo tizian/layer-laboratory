@@ -1,0 +1,62 @@
+<scene version="2.0.0">
+	<default name="spp" value="1024"/>
+    <default name="envmap_scale" value="1.0"/>
+
+    <integrator type="path">
+    </integrator>
+
+    <sensor type="perspective">
+        <string name="fov_axis" value="larger"/>
+        <float name="fov" value="30"/>
+        <transform name="to_world">
+            <scale x="-1"/>
+            <lookat target="0, 0.33, -0.02" origin="-2, 1.23, 0" up="0, 1, 0"/>
+            <scale z="-1"/>
+        </transform>
+        <sampler type="independent">
+            <integer name="sample_count" value="$spp"/>
+        </sampler>
+        <film type="hdrfilm">
+            <integer name="width" value="960"/>
+            <integer name="height" value="720"/>
+            <rfilter type="gaussian"/>
+            <string name="pixel_format" value="rgb"/>
+        </film>
+    </sensor>
+
+    <shape type="ply">
+        <string name="filename" value="shapes/dragon.ply"/>
+
+        <bsdf type="tangentrotation">
+            <bsdf type="fourier">
+                <string name="filename" value="$layer_filename"/>
+            </bsdf>
+
+            <texture type="mesh_attribute" name="angles_mesh">
+                <string name="name" value="vertex_frame"/>
+            </texture>
+        </bsdf>
+    </shape>
+
+    <shape type="ply">
+        <string name="filename" value="shapes/background.ply"/>
+        <bsdf type="roughplastic">
+            <rgb name="diffuse_reflectance" value="0.05, 0.05, 0.05"/>
+            <float name="alpha" value="0.01"/>
+        </bsdf>
+
+        <transform name="to_world">
+            <rotate y="1" angle="270"/>
+        </transform>
+    </shape>
+
+    <emitter type="envmap">
+        <string name="filename" value="textures/envmap.exr"/>
+        <float name="scale" value="$envmap_scale"/>
+
+        <transform name="to_world">
+            <rotate y="1" angle="100"/>
+            <scale value="1, 1, -1"/>
+        </transform>
+    </emitter>
+</scene>

@@ -74,3 +74,31 @@ mitsuba.conf
 # -DCMAKE_EXPORT_COMPILE_COMMANDS=1 is specified)
 compile_commands.json
 /.clangd
+
+
+# Result outputs
+src/liblayer/tests/data/*.bsdf
+
+results/Figure_2_AnisotropicFrequencies/*.pdf
+results/Figure_2_AnisotropicFrequencies/*.bsdf
+
+results/Figure_3_IncreasingMSParameter/*.bsdf
+results/Figure_3_IncreasingMSParameter/*.exr
+
+results/Figure_4_InverseTransmission/*.pdf
+results/Figure_4_InverseTransmission/*.bsdf
+
+results/Figure_5_FresnelRegularization/*.pdf
+results/Figure_5_FresnelRegularization/*.bsdf
+
+results/Figure_6_AnisotropicSpheres/*.bsdf
+results/Figure_6_AnisotropicSpheres/*.exr
+
+results/Figure_7_LayeredExamples/*.bsdf
+results/Figure_7_LayeredExamples/*.exr
+
+results/Figure_9_11_12_Validation/analytic_addition/*
+results/Figure_9_11_12_Validation/analytic_subtraction/*
+results/Figure_9_11_12_Validation/measured_addition/*
+results/Figure_9_11_12_Validation/measured_subtraction/*
+results/Figure_9_11_12_Validation/measurements/*

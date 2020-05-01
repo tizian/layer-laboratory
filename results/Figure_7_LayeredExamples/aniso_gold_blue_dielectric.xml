@@ -1,0 +1,165 @@
+<scene version="2.0.0">
+    <integrator type="path">
+        <boolean name="hide_emitters" value="true"/>
+    </integrator>
+
+    <sensor type="perspective">
+        <string name="fov_axis" value="larger"/>
+        <float name="fov" value="32"/>
+        <transform name="to_world">
+            <lookat origin="8, 3.36, 0"
+                    target="0, 0.36, 0"
+                    up    ="0, 1, 0"/>
+            <rotate x="0" y="1" z="0" angle="240"/>
+        </transform>
+        <sampler type="independent">
+            <integer name="sample_count" value="32"/>
+        </sampler>
+        <film type="hdrfilm">
+            <integer name="width" value="1280"/>
+            <integer name="height" value="720"/>
+            <rfilter type="gaussian"/>
+            <string name="pixel_format" value="rgb"/>
+        </film>
+    </sensor>
+
+    <bsdf type="fourier" id="material">
+        <string name="filename" value="aniso_gold_blue_dielectric.bsdf"/>
+    </bsdf>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/disk.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+
+            <texture type="bitmap" name="angles_direct">
+                <string name="filename" value="textures/aniso_rot_circles.png"/>
+                <boolean name="raw" value="true"/>
+                <transform name="to_uv">
+                    <scale x="8" y="8"/>
+                </transform>
+            </texture>
+        </bsdf>
+    </shape>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_1_bevel1.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_1_bevel2.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+
+
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_1_cap1.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+
+            <texture type="bitmap" name="angles_direct">
+                <string name="filename" value="textures/circular.png"/>
+                <boolean name="raw" value="true"/>
+            </texture>
+
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_1_cap2.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+
+            <texture type="bitmap" name="angles_direct">
+                <string name="filename" value="textures/circular.png"/>
+                <boolean name="raw" value="true"/>
+            </texture>
+
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_1.obj"/>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_2_bevel1.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_2_bevel2.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_2_cap1.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+
+            <texture type="bitmap" name="angles_direct">
+                <string name="filename" value="textures/circular.png"/>
+                <boolean name="raw" value="true"/>
+            </texture>
+
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_2_cap2.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+
+            <texture type="bitmap" name="angles_direct">
+                <string name="filename" value="textures/circular.png"/>
+                <boolean name="raw" value="true"/>
+            </texture>
+
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="shapes/cylinder_2.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+
+            <texture type="bitmap" name="angles_vector">
+                <string name="filename" value="textures/fiber_mesh_vec.png"/>
+                <boolean name="raw" value="true"/>
+                <transform name="to_uv">
+                    <scale x="8" y="16"/>
+                </transform>
+            </texture>
+        </bsdf>
+    </shape>
+
+    <shape type="sphere">
+        <ref id="material"/>
+
+        <transform name="to_world">
+            <rotate x="1" y="0" z="0" angle="90"/>
+            <scale x="0.4" y="0.4" z="0.4"/>
+            <translate x="0.2" y="0.4" z="1.2"/>
+        </transform>
+    </shape>
+
+    <emitter type="envmap">
+        <string name="filename" value="textures/envmap.exr"/>
+        <float name="scale" value="2.0"/>
+        <transform name="to_world">
+            <scale x="1" y="1" z="-1"/>
+        </transform>
+    </emitter>
+</scene>

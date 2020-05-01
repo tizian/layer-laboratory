@@ -1,0 +1,89 @@
+<scene version="2.0.0">
+	<default name="spp" value="1024"/>
+
+    <integrator type="path">
+    </integrator>
+
+    <sensor type="perspective">
+        <string name="fov_axis" value="larger"/>
+        <float name="fov" value="20"/>
+        <transform name="to_world">
+        	<scale x="-1"/>
+            <lookat target="0, 1.2, 0" origin="9, 4, 0" up="0, 1, 0"/>
+            <rotate y="1" angle="0"/>
+        </transform>
+        <sampler type="independent">
+            <integer name="sample_count" value="$spp"/>
+        </sampler>
+        <film type="hdrfilm">
+            <integer name="width" value="600"/>
+            <integer name="height" value="600"/>
+            <rfilter type="gaussian"/>
+            <string name="pixel_format" value="rgb"/>
+        </film>
+    </sensor>
+
+    <bsdf type="fourier" id="material">
+        <string name="filename" value="0.05_0.40_09.bsdf"/>
+    </bsdf>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/sphere.obj"/>
+        <ref id="material"/>
+
+        <transform name="to_world">
+            <scale value="0.7, 0.7, 0.7"/>
+            <rotate x="1" angle="0"/>
+            <translate value="0.3, 0.7, 0.8"/>
+        </transform>
+    </shape>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/mesh1.obj"/>
+        <ref id="material"/>
+
+        <transform name="to_world">
+            <scale x="0.5" y="0.5" z="0.5"/>
+            <rotate x="1" angle="-90"/>
+            <rotate y="1" angle="120"/>
+            <translate x="0.0" y="1.04" z="-0.7"/>
+        </transform>
+    </shape>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/mesh0.obj"/>
+        <bsdf type="tangentrotation">
+            <ref id="material"/>
+            <boolean name="flip_orientation" value="true"/>
+        </bsdf>
+
+        <transform name="to_world">
+            <scale x="0.5" y="0.5" z="0.5"/>
+            <rotate x="1" angle="-90"/>
+            <rotate y="1" angle="120"/>
+            <translate x="0.0" y="1.04" z="-0.7"/>
+        </transform>
+    </shape>
+
+    <shape type="obj">
+        <string name="filename" value="shapes/plane.obj"/>
+        <bsdf type="roughplastic">
+            <rgb name="diffuse_reflectance" value="0.0, 0.0, 0.0"/>
+            <float name="alpha" value="0.05"/>
+        </bsdf>
+
+        <transform name="to_world">
+            <scale value="100, 100, 100"/>
+            <translate value="0, 0, 0"/>
+        </transform>
+    </shape>
+
+    <emitter type="envmap">
+        <string name="filename" value="textures/envmap.exr"/>
+        <float name="scale" value="0.7"/>
+        <transform name="to_world">
+            <rotate y="1" angle="-160"/>
+            <scale value="1, 1, -1"/>
+        </transform>
+    </emitter>
+</scene>

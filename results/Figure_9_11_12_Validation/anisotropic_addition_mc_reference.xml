@@ -1,0 +1,47 @@
+<scene version="2.0.0">
+
+    <default name="zenith"  value="30"/>
+	<default name="azimuth" value="0"/>
+    <default name="samples" value="1000000"/>
+
+    <sensor type="perspective">
+        <string name="fov_axis" value="larger"/>
+        <float name="fov" value="32"/>
+        <transform name="to_world">
+            <lookat origin="8, 3.36, 0"
+                    target="0, 0.36, 0"
+                    up    ="0, 1, 0"/>
+            <rotate x="0" y="1" z="0" angle="240"/>
+        </transform>
+        <sampler type="independent">
+            <integer name="sample_count" value="1"/>
+        </sampler>
+        <film type="hdrfilm">
+            <integer name="width" value="1"/>
+            <integer name="height" value="1"/>
+            <rfilter type="gaussian"/>
+            <string name="pixel_format" value="rgb"/>
+        </film>
+    </sensor>
+
+	<integrator type="bruteforce_layers">
+		<string name="filename" value="aniso_addition_ref_$azimuth.txt"/>
+
+		<integer name="num_samples" value="$samples"/>
+		<float name="theta_i" value="$zenith"/>
+		<float name="phi_i" value="$azimuth"/>
+
+		<bsdf type="roughdielectric">
+			<float name="int_ior" value="1.5"/>
+			<float name="ext_ior" value="1.0"/>
+			<float name="alpha_u" value="0.1"/>
+			<float name="alpha_v" value="0.2"/>
+		</bsdf>
+
+		<bsdf type="roughconductor">
+			<string name="material" value="none"/>
+			<float name="alpha_u" value="0.2"/>
+			<float name="alpha_v" value="0.1"/>
+		</bsdf>
+	</integrator>
+</scene>

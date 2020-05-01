@@ -1,0 +1,44 @@
+<scene version="2.0.0">
+	<default name="spp" value="1024"/>
+
+    <integrator type="path">
+    </integrator>
+
+    <sensor type="perspective">
+        <string name="fov_axis" value="larger"/>
+        <float name="fov" value="16"/>
+        <transform name="to_world">
+            <scale x="-1"/>
+        	<lookat target="0, 0, 0" origin="5, 3, -5" up="0, 1, 0"/>
+        </transform>
+        <sampler type="independent">
+            <integer name="sample_count" value="$spp"/>
+        </sampler>
+        <film type="hdrfilm">
+            <integer name="width" value="600"/>
+            <integer name="height" value="600"/>
+            <rfilter type="gaussian"/>
+            <string name="pixel_format" value="rgb"/>
+        </film>
+    </sensor>
+
+    <bsdf type="fourier" id="material">
+        <string name="filename" value="ver_hor.bsdf"/>
+    </bsdf>
+
+    <shape type="sphere">
+        <ref id="material"/>
+        <transform name="to_world">
+            <rotate x="1" angle="90"/>
+        </transform>
+    </shape>
+
+    <emitter type="envmap">
+        <string name="filename" value="textures/envmap.exr"/>
+        <float name="scale" value="1.0"/>
+        <transform name="to_world">
+            <rotate y="1" angle="210"/>
+            <scale value="1, 1, -1"/>
+        </transform>
+    </emitter>
+</scene>
