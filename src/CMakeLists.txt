@@ -11,6 +11,9 @@ if (MTS_ENABLE_GUI)
     add_subdirectory(libui)
 endif()
 
+# Mitsuba layer library
+add_subdirectory(liblayer)
+
 # Mitsuba executables
 add_subdirectory(mitsuba)
 

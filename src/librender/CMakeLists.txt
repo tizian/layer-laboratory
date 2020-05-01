@@ -80,7 +80,7 @@ target_link_libraries(mitsuba-render
 target_link_libraries(mitsuba-render PRIVATE tbb)
 
 # Link to libcore
-target_link_libraries(mitsuba-render PUBLIC mitsuba-core)
+target_link_libraries(mitsuba-render PUBLIC mitsuba-core mitsuba-layer)
 
 # Link to Embree
 if (MTS_ENABLE_EMBREE)

@@ -191,6 +191,8 @@ set_property(TARGET tbb tbb_def_files PROPERTY FOLDER "dependencies")
 set(TBB_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/tbb/include)
 set(TBB_INCLUDE_DIRS ${TBB_INCLUDE_DIRS} PARENT_SCOPE)
 
+set(EIGEN_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/eigen PARENT_SCOPE)
+
 if (MTS_ENABLE_GUI)
     set_property(TARGET glfw glfw_objects nanogui nanogui-obj PROPERTY FOLDER "dependencies")
     set(EIGEN_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/nanogui/ext/eigen PARENT_SCOPE)

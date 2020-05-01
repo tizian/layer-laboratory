@@ -219,6 +219,7 @@ include_directories(include
   ${EIGEN_INCLUDE_DIRS}
   ${ENOKI_INCLUDE_DIRS}
   ${TBB_INCLUDE_DIRS}
+  ${EIGEN_INCLUDE_DIRS}
 )
 
 if (MTS_ENABLE_EMBREE)

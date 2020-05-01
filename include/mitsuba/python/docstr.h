@@ -337,20 +337,6 @@ See also:
 
 static const char *__doc_mitsuba_BSDF_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_BSDF_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_BSDF_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_BSDF_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_BSDF_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_BSDF_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_BSDF_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_BSDF_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_BSDFContext =
 R"doc(Context data structure for BSDF evaluation and sampling
 
@@ -480,6 +466,306 @@ static const char *__doc_mitsuba_BSDFSample3_sampled_component = R"doc(Stores th
 static const char *__doc_mitsuba_BSDFSample3_sampled_type = R"doc(Stores the component type that was sampled by BSDF::sample())doc";
 
 static const char *__doc_mitsuba_BSDFSample3_wo = R"doc(Normalized outgoing direction in local coordinates)doc";
+
+static const char *__doc_mitsuba_BSDFStorage =
+R"doc(Storage class for anisotropic BSDFs
+
+This class implements sparse storage support for anisotropic BSDFs
+which are point-sampled as a function of the incident and exitant
+zenith angles and expanded into Fourier coefficients as a function of
+the azimuthal sum and difference angles.)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_BSDFStorage = R"doc(Map an existing BSDF storage file into memory)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_BSDFStorage_2 =
+R"doc(Create a new BSDF storage file for the given amount of coefficients
+etc)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_alpha = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_data = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_eta = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_flags = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_identifier = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_bases = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_channels = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_coeffs = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_max_order_d = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_max_order_s = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_metadata_bytes = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_nodes = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_parameter_values = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_n_parameters = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_unused = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_Header_version = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_alpha = R"doc(Return the Beckmann-equivalent roughness (0: bottom, 1: top surface))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_basis_count =
+R"doc(Return the number of basis functions stored in this file (usually just
+1))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_cdf =
+R"doc(Return a pointer to the coefficients of the CDF associated with the
+incident angle ``o``)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_cdf_2 =
+R"doc(Return a pointer to the coefficients of the CDF associated with the
+incident angle ``o`` (const version))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_channel_count = R"doc(Return the number of color channels)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_class = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_close = R"doc(Forcefully release all resources)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_coeff_data =
+R"doc(Return the sparse data offset for the given incident and exitant angle
+pair)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_coeff_data_2 =
+R"doc(Return the sparse data offset for the given incident and exitant angle
+pair (const version))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_coeff_data_and_sizes =
+R"doc(Return the sparse data offset and Fourier dimensions for the given
+incident and exitant angle pair)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_coeff_data_and_sizes_2 =
+R"doc(Return the sparse data offset and Fourier dimensions for the given
+incident and exitant angle pair (const version))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_eta = R"doc(Return the relative index of refraction)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_eval =
+R"doc(Evaluate the model.
+
+Parameter ``mu_i``:
+    The incident elevation angle cosine
+
+Parameter ``mu_o``:
+    The outgoing elevation angle cosine
+
+Parameter ``phi_i``:
+    The incident azimuthal angle
+
+Parameter ``phi_o``:
+    The outgoing azimuthal angle
+
+Parameter ``basis_coeffs``:
+    Basis coefficients for parameter interpolation (default:
+    ``nullptr``)
+
+Parameter ``clamp``:
+    Choose whether the result should be clamped to the range [0, inf)
+    (default: true)
+
+Remark:
+    The Python API lacks the ``basis_coeffs`` parameter.
+
+Returns:
+    The BSDF value for given angles)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_fourier_dimensions =
+R"doc(Return the Fourier dimensions (in s and d) for the given incident and
+exitant angle pair)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_fourier_slice =
+R"doc(For debugging: return a 2D Fourier series for the given parameters (in
+phi_s, phi_d format))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_fourier_slice_interpolated =
+R"doc(For debugging: return a interpolated 2D Fourier series for the given
+parameters (in phi_s, phi_d format))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_from_layer = R"doc(Create a BSDF storage file from a Layer data structure (monochromatic))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_from_layer_general =
+R"doc(Create a BSDF storage file from three Layer data structures (most
+general interface))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_from_layer_rgb = R"doc(Create a BSDF storage file from three Layer data structures (RGB))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_interpolate_fourier_series =
+R"doc(Use spline interpolation over coefficient tables of a 2D Fourier
+series)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_interpolate_marginal_cosine_series = R"doc(Use spline interpolation over coefficients of a Cosine series)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_interpolated_fourier_dimensions =
+R"doc(Return the number of Fourier modes in the sparse \mu_i and \mu_o
+storage)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_cdf_mu = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_coeffs = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_filename = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_header = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_metadata = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_mmap = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_nodes = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_offset_table = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_param_sample_counts = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_param_sample_positions = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_param_sample_positions_nested = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_pdf_mu = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_m_reciprocals = R"doc()doc";
+
+static const char *__doc_mitsuba_BSDFStorage_marginal_order_count =
+R"doc(Return the number of Fourier orders for the marginals (pdf and cdf)
+over \mu_o)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_max_orders = R"doc(Return the maximal number of Fourier orders)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_metadata = R"doc(Return metadata attached to the BSDF file (if any))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_node_count = R"doc(Return the resolution of the discretization in \mu_i and \mu_o)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_nodes = R"doc(Return the nodes of the underlying discretization in \mu_i and \mu_o)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_offset_table = R"doc(Return a pointer to the underlying sparse offset table)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_offset_table_2 = R"doc(Return a pointer to the underlying sparse offset table (const version))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_parameter_count = R"doc(Return the number of model parameters)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_parameter_sample_count = R"doc(Return the number of samples associated with parameter ``i``)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_parameter_sample_positions = R"doc(Return the sample positions associated with parameter ``i``)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_pdf =
+R"doc(Evaluate the probability density of the sampling scheme implemented by
+sample().
+
+Parameter ``mu_i``:
+    The incident elevation angle cosine
+
+Parameter ``mu_o``:
+    The outgoing elevation angle cosine
+
+Parameter ``phi_i``:
+    The incident azimuthal angle
+
+Parameter ``phi_o``:
+    The outgoing azimuthal angle
+
+Parameter ``basis_coeffs``:
+    Basis coefficients for parameter interpolation (default:
+    ``nullptr``)
+
+Remark:
+    The Python API lacks the ``basis_coeffs`` parameter.
+
+Returns:
+    The pdf value for given angles.)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_sample =
+R"doc(Importance sample the model.
+
+Parameter ``mu_i``:
+    The incident elevation angle cosine
+
+Parameter ``phi_i``:
+    The incident azimuthal angle
+
+Parameter ``sample``:
+    A pair of uniformly distributed random samples in the interval
+    ``[0,1]``
+
+Parameter ``basis_coeffs``:
+    Basis coefficients for parameter interpolation (default:
+    ``nullptr``)
+
+/return (weight, mu_o, phi_o, pdf) weight: Importance weight (i.e. the
+value of the BSDF divided by the pdf) for the RGB channels. mu_o: The
+sampled outgoing elevation angle cosine phi_o: The sampled outoing
+azimuthal angle pdf: The probability density function of the sampling
+scheme
+
+Remark:
+    From Python, this function is called using the syntax ``weight,
+    mu_o, phi_o, pdf = storage.sample(mu_i, phi_i, sample)`` where
+    ``sample`` can be an array. The Python API lacks the
+    ``basis_coeffs`` parameter.)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_sample_azimuthal_difference_angle =
+R"doc(Importance sample azimuthal difference angle.
+
+Parameter ``coeffs``:
+    Coefficient storage
+
+Parameter ``ms``:
+    Denotes the size of ``coeffs`` in phi_s dimension
+
+Parameter ``md``:
+    Denotes the size of ``coeffs`` in phi_d dimension
+
+Parameter ``phi_i``:
+    The incident azimuth angle
+
+Parameter ``sample``:
+    A uniformly distributed random sample in the interval ``[0,1]``
+
+Returns:
+    1. The importance weight (i.e. the value of the Fourier series
+    divided by pdf) 2. The sampled angle phi_d 3. The probability
+    density of the sampled angle)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_sample_elevation_angle =
+R"doc(Importance sample outgoing elevation angle cosine.
+
+Parameter ``mu_i``:
+    The incident elevation angle cosine
+
+Parameter ``phi_i``:
+    The incident azimuth angle
+
+Parameter ``sample``:
+    A uniformly distributed random sample in the interval ``[0,1]``
+    \basis_coeffs Basis coefficients for parameter interpolation
+
+Returns:
+    1. The sampled angle mu_o 2. The probability density of the
+    sampled angle)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_set_alpha = R"doc(Set the Beckmann-equivalent roughness (0: bottom, 1: top surface))doc";
+
+static const char *__doc_mitsuba_BSDFStorage_set_eta = R"doc(Set the relative index of refraction)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_size = R"doc(Return the size of the underlying representation in bytes)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_stats = R"doc(Return statistics)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_to_string = R"doc(Return a string representation)doc";
+
+static const char *__doc_mitsuba_BSDFStorage_total_coeffs = R"doc(Return the total number of stored coefficients)doc";
 
 static const char *__doc_mitsuba_BSDF_BSDF = R"doc(//! @})doc";
 
@@ -1843,20 +2129,6 @@ static const char *__doc_mitsuba_Emitter = R"doc()doc";
 
 static const char *__doc_mitsuba_Emitter_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Emitter_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Emitter_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Emitter_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Emitter_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Emitter_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Emitter_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Emitter_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_EmitterFlags =
 R"doc(This list of flags is used to classify the different types of
 emitters.)doc";
@@ -1914,20 +2186,6 @@ reason, every endpoint instance keeps a reference to a medium (which
 may be set to ``nullptr`` when it is surrounded by vacuum).)doc";
 
 static const char *__doc_mitsuba_Endpoint_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Endpoint_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_Endpoint_Endpoint = R"doc(//! @})doc";
 
@@ -2226,20 +2484,6 @@ then committed to the film using the put() method.)doc";
 
 static const char *__doc_mitsuba_Film_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Film_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Film_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Film_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Film_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Film_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Film_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Film_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_Film_Film = R"doc(Create a film)doc";
 
 static const char *__doc_mitsuba_Film_bitmap = R"doc(Return a bitmap object storing the developed contents of the film)doc";
@@ -2284,7 +2528,9 @@ static const char *__doc_mitsuba_Film_m_size = R"doc()doc";
 
 static const char *__doc_mitsuba_Film_prepare = R"doc(Configure the film for rendering a specified set of channels)doc";
 
-static const char *__doc_mitsuba_Film_put = R"doc(Merge an image block into the film)doc";
+static const char *__doc_mitsuba_Film_put =
+R"doc(Merge an image block into the film. This methods should be thread-
+safe.)doc";
 
 static const char *__doc_mitsuba_Film_reconstruction_filter = R"doc(Return the image reconstruction filter (const version))doc";
 
@@ -2565,20 +2811,6 @@ reconstruction filters.)doc";
 
 static const char *__doc_mitsuba_ImageBlock_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_ImageBlock_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_ImageBlock_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_ImageBlock_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_ImageBlock_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_ImageBlock_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_ImageBlock_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_ImageBlock_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_ImageBlock_ImageBlock =
 R"doc(Construct a new image block of the requested properties
 
@@ -2740,20 +2972,6 @@ assumptions on how radiance is computed, which allows for many
 different kinds of implementations.)doc";
 
 static const char *__doc_mitsuba_Integrator_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Integrator_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_Integrator_Integrator = R"doc(Create an integrator)doc";
 
@@ -2920,6 +3138,310 @@ processor supports all instruction sets which were selected at compile
 time. If not, the application is terminated via ``abort()``.)doc";
 
 static const char *__doc_mitsuba_Jit_static_shutdown = R"doc(Release all memory used by JIT-compiled routines)doc";
+
+static const char *__doc_mitsuba_Layer = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_Layer =
+R"doc(Create a new layer with the given discretization in zenith angles
+
+Parameter ``nodes``:
+    A vector with the zenith angle cosines of the chosen
+    discretization
+
+Parameter ``weights``:
+    Associated weights for each angle. Usually, the 'nodes' and
+    'weights' are generated using some kind of quadrature rule (e.g.
+    Gauss-Legendre, Gauss-Lobatto, etc.)
+
+Parameter ``fourier_orders_s``:
+    Specifies the number of coefficients to use for the azimuthal
+    Fourier expansion of phi_s (default: 1)
+
+Parameter ``fourier_orders_d``:
+    Specifies the number of coefficients to use for the azimuthal
+    Fourier expansion of phi_d (default: 1))doc";
+
+static const char *__doc_mitsuba_Layer_Quintet = R"doc(Helper struct for sparse matrix construction)doc";
+
+static const char *__doc_mitsuba_Layer_Quintet_Quintet = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_Quintet_d = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_Quintet_i = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_Quintet_o = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_Quintet_s = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_Quintet_value = R"doc()doc";
+
+static const char *__doc_mitsuba_Layer_add =
+R"doc(Additive composition of two layers
+
+Parameter ``l1``:
+    Input layer 1
+
+Parameter ``l2``:
+    Input layer 2
+
+Parameter ``output``:
+    Used to return the resulting layer
+
+Parameter ``homogeneous``:
+    When both layers are homogenous, (i.e. if their two sides are
+    indistinguishable, this flag should be set to ``True`` to get a
+    speed-up). Default: ``False``
+
+Parameter ``epsilon``:
+    Drop threshold. Only Fourier coefficients larger than this are
+    considered. This greatly affects both the accuracy and the
+    performance of the adding process.
+
+Remark:
+    In the Python API, the ``output`` parameter is directly returned)doc";
+
+static const char *__doc_mitsuba_Layer_add_to_bottom =
+R"doc(Append a layer below the current one
+
+This is just a convenience wrapper around Layer::add()
+
+Parameter ``l``:
+    The layer to be appended
+
+Parameter ``homogeneous``:
+    When the layers are homogenous, (i.e. if their two sides are
+    indistinguishable, this flag should be set to ``True`` to get a
+    speed-up). Default: ``False``
+
+Parameter ``epsilon``:
+    Drop threshold. Only Fourier coefficients larger than this are
+    considered. This greatly affects both the accuracy and the
+    performance of the adding process.)doc";
+
+static const char *__doc_mitsuba_Layer_add_to_top =
+R"doc(Append a layer above the current one
+
+This is just a convenience wrapper around Layer::add()
+
+Parameter ``l``:
+    The layer to be appended
+
+Parameter ``homogeneous``:
+    When the layers are homogenous, (i.e. if their two sides are
+    indistinguishable, this flag should be set to ``True`` to get a
+    speed-up). Default: ``False``
+
+Parameter ``epsilon``:
+    Drop threshold. Only Fourier coefficients larger than this are
+    considered. This greatly affects both the accuracy and the
+    performance of the adding process.)doc";
+
+static const char *__doc_mitsuba_Layer_clear = R"doc(Clear all scattering data)doc";
+
+static const char *__doc_mitsuba_Layer_clear_backside = R"doc(Clear scattering data related to the reflection from the bottom)doc";
+
+static const char *__doc_mitsuba_Layer_eval =
+R"doc(Evaluate the BSDF stored in the layer.
+
+Parameter ``mu_o``:
+    The outgoing elevation angle cosine
+
+Parameter ``mu_i``:
+    The incident elevation angle cosine
+
+Parameter ``phi_s``:
+    The azimuthal angle sum
+
+Parameter ``phi_d``:
+    The azimuthal angle difference
+
+Parameter ``clamp``:
+    Choose whether the result should be clamped to the range [0, inf)
+    (default: true)
+
+Returns:
+    The BSDF value for given angles)doc";
+
+static const char *__doc_mitsuba_Layer_expand =
+R"doc(Solve for the transport matrix of a layer with the given optical
+thickness (using Adding-Doubling))doc";
+
+static const char *__doc_mitsuba_Layer_find_truncation =
+R"doc(Find optimal box for a given maximal truncation error.
+
+Parameter ``o``:
+    Outgoing elevation angle node index
+
+Parameter ``i``:
+    Incident elevation angle node index
+
+Parameter ``error``:
+    Maximal truncation error
+
+Parameter ``ms_trunc``:
+    The number of required Fourier coefficients in phi_s
+
+Parameter ``md_trunc``:
+    The number of required Fourier coefficients in phi_d)doc";
+
+static const char *__doc_mitsuba_Layer_fourier_orders = R"doc(Return the number of Fourier orders)doc";
+
+static const char *__doc_mitsuba_Layer_fourier_slice =
+R"doc(For debugging: return a 2D Fourier series for the given parameters (in
+phi_s, phi_d format))doc";
+
+static const char *__doc_mitsuba_Layer_fourier_slice_interpolated =
+R"doc(For debugging: return a 2D Fourier series for the given parameters (in
+phi_s, phi_d format))doc";
+
+static const char *__doc_mitsuba_Layer_m_fourier_orders_d = R"doc(Number of Fourier modes)doc";
+
+static const char *__doc_mitsuba_Layer_m_fourier_orders_s = R"doc(Number of Fourier modes)doc";
+
+static const char *__doc_mitsuba_Layer_m_nodes = R"doc(Integration nodes)doc";
+
+static const char *__doc_mitsuba_Layer_m_reflection_bottom = R"doc(Scattering matrices)doc";
+
+static const char *__doc_mitsuba_Layer_m_reflection_top = R"doc(Scattering matrices)doc";
+
+static const char *__doc_mitsuba_Layer_m_transmission_bottom_top = R"doc(Scattering matrices)doc";
+
+static const char *__doc_mitsuba_Layer_m_transmission_top_bottom = R"doc(Scattering matrices)doc";
+
+static const char *__doc_mitsuba_Layer_m_weights = R"doc(Integration weights)doc";
+
+static const char *__doc_mitsuba_Layer_nodes = R"doc(Return the used integration nodes)doc";
+
+static const char *__doc_mitsuba_Layer_reflection_bottom = R"doc(Return the scattering matrix for reflection on the bottom)doc";
+
+static const char *__doc_mitsuba_Layer_reflection_bottom_2 =
+R"doc(Return the scattering matrix for reflection on the bottom (const
+version))doc";
+
+static const char *__doc_mitsuba_Layer_reflection_top = R"doc(Return the scattering matrix for reflection on the top)doc";
+
+static const char *__doc_mitsuba_Layer_reflection_top_2 = R"doc(Return the scattering matrix for reflection on the top (const version))doc";
+
+static const char *__doc_mitsuba_Layer_resolution = R"doc(Return the number of nodes (i.e. the number of discretizations in \mu))doc";
+
+static const char *__doc_mitsuba_Layer_reverse = R"doc(Reverse the layer (Swap top and bottom interfaces))doc";
+
+static const char *__doc_mitsuba_Layer_scatter_coeff = R"doc(Access a scattering matrix entry)doc";
+
+static const char *__doc_mitsuba_Layer_set_diffuse =
+R"doc(Initialize the layer with a diffuse base layer
+
+Parameter ``albedo``:
+    The layer's diffuse reflectance (in ``[0, 1]``))doc";
+
+static const char *__doc_mitsuba_Layer_set_empty = R"doc(Initialize the layer with an empty (non-scattering) layer)doc";
+
+static const char *__doc_mitsuba_Layer_set_fourier_coeffs =
+R"doc(Initialize the layer with explicit Fourier series coefficients for all
+pairs of elevation angles. Useful to compute a layer from external
+data such as measurements.
+
+Parameter ``coeffs``:
+    List of matrices, each containing the 2D Fourier series
+    coefficients for a specific pair of elevation angles. The size of
+    the list should be resolution()*resolution().)doc";
+
+static const char *__doc_mitsuba_Layer_set_henyey_greenstein =
+R"doc(Initialize the layer with a Henyey-Greenstein phase function
+
+Parameter ``albedo``:
+    The layer's single scattering albedo reflectance (in ``[0, 1]``)
+
+Parameter ``g``:
+    The layer's HG "anisotropy" parameter (in ``[-1, 1]``))doc";
+
+static const char *__doc_mitsuba_Layer_set_isotropic =
+R"doc(Initialize the layer with an isotropic phase function
+
+Parameter ``albedo``:
+    The layer's single scattering albedo reflectance (in ``[0, 1]``))doc";
+
+static const char *__doc_mitsuba_Layer_set_microfacet =
+R"doc(Initialize the layer with a microfacet model (dielectric or conductor)
+
+Parameter ``eta``:
+    Relative index of refraction (complex)
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``fourier_orders_s``:
+    Number of phi_s Fourier orders that should be used internally in
+    the computation. Defaults to the value returned by
+    fourier_orders()
+
+Parameter ``fourier_orders_d``:
+    Number of phi_d Fourier orders that should be used internally in
+    the computation. Defaults to the value returned by
+    fourier_orders()
+
+Parameter ``component``:
+    Indicates whether which component should be considered: The full
+    model (default, 0), exponential (1), shadowing-masking (2),
+    Fresnel + remainder (3)
+
+Parameter ``n_samples_phi_s``:
+    Number of samples to use for the Filon integration along phi_s.
+    Defaults to the same value as used for fourier_orders_s
+
+Parameter ``isotropic_g``:
+    Indicates whether an isotropic version of the shadowing-masking
+    function should be used. (Default: false))doc";
+
+static const char *__doc_mitsuba_Layer_set_quintets = R"doc(Initialize from a list of quintets)doc";
+
+static const char *__doc_mitsuba_Layer_set_von_mises_fisher =
+R"doc(Initialize the layer with a von Mises-Fisher phase function
+
+Parameter ``albedo``:
+    The layer's single scattering albedo reflectance (in ``[0, 1]``)
+
+Parameter ``kappa``:
+    The layer's kappa "anisotropy" parameter)doc";
+
+static const char *__doc_mitsuba_Layer_subtract =
+R"doc(Subtractive composition of two layers. Currently, only recovering
+"Rt_2" underneath a transmissive layer (Rt_1, Rb_1, Ttb_1, Tbt_1) is
+implemented.
+
+Parameter ``ladd``:
+    Input combined layer
+
+Parameter ``l1``:
+    Input top layer to be subtracted
+
+Parameter ``l2``:
+    Used to return the resulting (bottom) layer
+
+Parameter ``eps``:
+    Tikhonov regularization parameter
+
+Remark:
+    In the Python API, the ``l2`` parameter is directly returned)doc";
+
+static const char *__doc_mitsuba_Layer_to_string = R"doc(Return a human-readable summary)doc";
+
+static const char *__doc_mitsuba_Layer_transmission_bottom_top = R"doc(Return the scattering matrix for transmission from bottom to top)doc";
+
+static const char *__doc_mitsuba_Layer_transmission_bottom_top_2 =
+R"doc(Return the scattering matrix for transmission from bottom to top
+(const version))doc";
+
+static const char *__doc_mitsuba_Layer_transmission_top_bottom = R"doc(Return the scattering matrix for transmission from top to bottom)doc";
+
+static const char *__doc_mitsuba_Layer_transmission_top_bottom_2 =
+R"doc(Return the scattering matrix for transmission from top to bottom
+(const version))doc";
+
+static const char *__doc_mitsuba_Layer_weights = R"doc(Return the used integration weights)doc";
 
 static const char *__doc_mitsuba_LogLevel = R"doc(Available Log message types)doc";
 
@@ -3124,20 +3646,6 @@ static const char *__doc_mitsuba_Marginal2D_to_string = R"doc()doc";
 static const char *__doc_mitsuba_Medium = R"doc()doc";
 
 static const char *__doc_mitsuba_Medium_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Medium_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_MediumInteraction = R"doc(Stores information related to a medium scattering interaction)doc";
 
@@ -3406,27 +3914,11 @@ static const char *__doc_mitsuba_Mesh = R"doc()doc";
 
 static const char *__doc_mitsuba_Mesh_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Mesh_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_Mesh_Mesh = R"doc(Create a new mesh with the given vertex and face data structures)doc";
 
-static const char *__doc_mitsuba_Mesh_Mesh_2 = R"doc(Create a new mesh from a blender mesh)doc";
+static const char *__doc_mitsuba_Mesh_Mesh_2 = R"doc()doc";
 
 static const char *__doc_mitsuba_Mesh_Mesh_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Mesh_Mesh_4 = R"doc()doc";
 
 static const char *__doc_mitsuba_Mesh_MeshAttribute = R"doc()doc";
 
@@ -3746,20 +4238,6 @@ static const char *__doc_mitsuba_MonteCarloIntegrator = R"doc()doc";
 
 static const char *__doc_mitsuba_MonteCarloIntegrator_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_MonteCarloIntegrator_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_MonteCarloIntegrator_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_MonteCarloIntegrator_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_MonteCarloIntegrator_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_MonteCarloIntegrator_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_MonteCarloIntegrator_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_MonteCarloIntegrator_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_MonteCarloIntegrator_MonteCarloIntegrator = R"doc(Create an integrator)doc";
 
 static const char *__doc_mitsuba_MonteCarloIntegrator_class = R"doc()doc";
@@ -3893,20 +4371,6 @@ See also:
 static const char *__doc_mitsuba_PhaseFunction = R"doc()doc";
 
 static const char *__doc_mitsuba_PhaseFunction_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_PhaseFunction_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_PhaseFunctionContext = R"doc()doc";
 
@@ -4262,20 +4726,6 @@ A useful feature of ProjectiveCamera sensors is that their view can be
 rendered using the traditional OpenGL pipeline.)doc";
 
 static const char *__doc_mitsuba_ProjectiveCamera_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_ProjectiveCamera_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_ProjectiveCamera_ProjectiveCamera = R"doc()doc";
 
@@ -4728,20 +5178,6 @@ MTS_FILTER_RESOLUTION.)doc";
 
 static const char *__doc_mitsuba_ReconstructionFilter_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_ReconstructionFilter_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_ReconstructionFilter_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_ReconstructionFilter_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_ReconstructionFilter_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_ReconstructionFilter_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_ReconstructionFilter_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_ReconstructionFilter_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_ReconstructionFilter_ReconstructionFilter = R"doc(Create a new reconstruction filter)doc";
 
 static const char *__doc_mitsuba_ReconstructionFilter_border_size = R"doc(Return the block border size required when rendering with this filter)doc";
@@ -4861,20 +5297,6 @@ static const char *__doc_mitsuba_Sampler = R"doc()doc";
 
 static const char *__doc_mitsuba_Sampler_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Sampler_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sampler_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sampler_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sampler_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sampler_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sampler_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sampler_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_Sampler_Sampler = R"doc()doc";
 
 static const char *__doc_mitsuba_Sampler_class = R"doc()doc";
@@ -4918,20 +5340,6 @@ default implementation of the render() method then repeatedly invokes
 this estimator to compute all pixels of the image.)doc";
 
 static const char *__doc_mitsuba_SamplingIntegrator_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_SamplingIntegrator_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_SamplingIntegrator_SamplingIntegrator = R"doc(//! @})doc";
 
@@ -5021,20 +5429,6 @@ reset at the beginning of the rendering phase.)doc";
 static const char *__doc_mitsuba_Scene = R"doc()doc";
 
 static const char *__doc_mitsuba_Scene_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Scene_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_Scene_Scene = R"doc(Instantiate a scene from a Properties object)doc";
 
@@ -5208,20 +5602,6 @@ static const char *__doc_mitsuba_Sensor = R"doc()doc";
 
 static const char *__doc_mitsuba_Sensor_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Sensor_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sensor_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sensor_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sensor_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sensor_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sensor_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Sensor_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_Sensor_Sensor = R"doc()doc";
 
 static const char *__doc_mitsuba_Sensor_class = R"doc()doc";
@@ -5318,37 +5698,9 @@ intersection acceleration data structures.)doc";
 
 static const char *__doc_mitsuba_Shape_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Shape_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Shape_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Shape_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Shape_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Shape_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Shape_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Shape_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_ShapeKDTree = R"doc()doc";
 
 static const char *__doc_mitsuba_ShapeKDTree_2 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_ShapeKDTree_9 = R"doc()doc";
 
 static const char *__doc_mitsuba_ShapeKDTree_ShapeKDTree =
 R"doc(Create an empty kd-tree and take build-related parameters from
@@ -6922,20 +7274,6 @@ continuous.)doc";
 
 static const char *__doc_mitsuba_Texture_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Texture_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Texture_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Texture_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Texture_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Texture_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Texture_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Texture_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_Texture_D65 = R"doc(Convenience method returning the standard D65 illuminant.)doc";
 
 static const char *__doc_mitsuba_Texture_Texture = R"doc()doc";
@@ -7438,20 +7776,6 @@ static const char *__doc_mitsuba_Volume = R"doc(Abstract base class for spatiall
 
 static const char *__doc_mitsuba_Volume_2 = R"doc()doc";
 
-static const char *__doc_mitsuba_Volume_3 = R"doc()doc";
-
-static const char *__doc_mitsuba_Volume_4 = R"doc()doc";
-
-static const char *__doc_mitsuba_Volume_5 = R"doc()doc";
-
-static const char *__doc_mitsuba_Volume_6 = R"doc()doc";
-
-static const char *__doc_mitsuba_Volume_7 = R"doc()doc";
-
-static const char *__doc_mitsuba_Volume_8 = R"doc()doc";
-
-static const char *__doc_mitsuba_Volume_9 = R"doc()doc";
-
 static const char *__doc_mitsuba_VolumeMetadata =
 R"doc(Holds metadata about a volume, e.g. when loaded from a Mitsuba binary
 volume file.)doc";
@@ -7639,6 +7963,50 @@ Parameter ``dp_du``:
 Parameter ``frame``:
     Used to return the computed frame)doc";
 
+static const char *__doc_mitsuba_convolve_fourier_series =
+R"doc(Computes the Fourier series of a product of Fourier series using
+discrete convolution.
+
+Parameter ``a``:
+    First input vector of (real) Fourier coefficients
+
+Parameter ``b``:
+    Second input vector of (complex) Fourier coefficients
+
+Parameter ``result``:
+    Output vector of convolved (complex) Fourier coefficients
+
+Remark:
+    In the Python API, the ``result`` vector is directly returned).)doc";
+
+static const char *__doc_mitsuba_convolve_fourier_series_antidiagonal =
+R"doc(Computes the 2D Fourier series of a product of an "anti-diagonal"
+Fourier series with another 2D series using discrete convolution.
+
+Parameter ``a``:
+    First input vector of Fourier coefficients (anto-diagonal of a 2D
+    matrix)
+
+Parameter ``B``:
+    Input matrix of 2D Fourier coefficients
+
+Parameter ``result``:
+    The resulting output matrix of convolved 2D Fourier coefficients)doc";
+
+static const char *__doc_mitsuba_convolve_fourier_series_diagonal =
+R"doc(Computes the 2D Fourier series of a product of a "diagonal" Fourier
+series with another 2D series using discrete convolution.
+
+Parameter ``a``:
+    First input vector of Fourier coefficients (diagonal of a 2D
+    matrix)
+
+Parameter ``B``:
+    Input matrix of 2D Fourier coefficients
+
+Parameter ``result``:
+    The resulting output matrix of convolved 2D Fourier coefficients)doc";
+
 static const char *__doc_mitsuba_coordinate_system = R"doc(Complete the set {a} to an orthonormal basis {a, b, c})doc";
 
 static const char *__doc_mitsuba_depolarize =
@@ -7769,7 +8137,137 @@ static const char *__doc_mitsuba_emitter =
 R"doc(Return the emitter associated with the intersection (if any) \note
 Defined in scene.h)doc";
 
+static const char *__doc_mitsuba_eval_3_fourier_series_2d =
+R"doc(Simultaneously evaluate *three* 2D Fourier series corresponding to the
+color channels (Y, R, B) and return a spectral power distribution
+
+Parameter ``coeffs``:
+    Coefficient storage
+
+Parameter ``ms``:
+    Denotes the size of ``coeffs`` in phi_s dimension
+
+Parameter ``md``:
+    Denotes the size of ``coeffs`` in phi_d dimension
+
+Parameter ``phi_s``:
+    Azimuthal sum angle for which the series should be evaluated
+
+Parameter ``phi_d``:
+    Azimuthal difference angle for which the series should be
+    evaluated
+
+Returns:
+    The value of the series for these angles)doc";
+
+static const char *__doc_mitsuba_eval_cosine_series_1d =
+R"doc(Evaluate a 1D Cosine series.
+
+Parameter ``coeffs``:
+    Coefficient storage
+
+Parameter ``m``:
+    Denotes the size of ``coeffs`` in phi dimension
+
+Parameter ``phi``:
+    Value for which the series should be evaluated
+
+Returns:
+    The value of the series at this value)doc";
+
+static const char *__doc_mitsuba_eval_fourier_series_2d =
+R"doc(Evaluate a 2D Fourier series.
+
+Parameter ``coeffs``:
+    Coefficient storage
+
+Parameter ``ms``:
+    Denotes the size of ``coeffs`` in phi_s dimension
+
+Parameter ``md``:
+    Denotes the size of ``coeffs`` in phi_d dimension
+
+Parameter ``phi_s``:
+    Azimuthal sum angle for which the series should be evaluated
+
+Parameter ``phi_d``:
+    Azimuthal difference angle for which the series should be
+    evaluated
+
+Returns:
+    The value of the series for these angles)doc";
+
 static const char *__doc_mitsuba_eval_reflectance = R"doc()doc";
+
+static const char *__doc_mitsuba_eval_transmittance = R"doc()doc";
+
+static const char *__doc_mitsuba_exp_cos_fourier_series =
+R"doc(Return Fourier series coefficients for an exponential of a cosine,
+specifically the expression "exp(A + B*cos(phi + C))"
+
+Parameter ``A``:
+    The 'A' coefficient in the above expression
+
+Parameter ``B``:
+    The 'B' coefficient in the above expression
+
+Parameter ``C``:
+    The 'C' coefficient in the above expression
+
+Parameter ``relerr``:
+    Relative error goal
+
+Returns:
+    Resulting Fourier series coefficients)doc";
+
+static const char *__doc_mitsuba_fftw_transform_2d =
+R"doc(Computes the Fourier series for a 2D matrix of function sample values
+via FFTW. The resulting series is assumed to only have real Fourier
+coefficients. This is useful to e.g. project measured BSDF slices in
+phi_s, phi_d into the Fourier representation.
+
+Parameter ``values``:
+    Input matrix of real function samples in [0, 2pi) x [0, 2pi).
+    Required to have odd dimensions.
+
+Returns:
+    Matrix of real 2D Fourier series coefficients with same size as
+    the input.)doc";
+
+static const char *__doc_mitsuba_fftw_transform_c2c =
+R"doc(Computes the complex to complex Fourier series via FFTW.
+
+Parameter ``values``:
+    Input array of complex function samples in [0, 2pi)
+
+Parameter ``size``:
+    Size of input array. Required to be an odd number.
+
+Parameter ``coeffs``:
+    Output array of complex Fourier series coefficients (same length
+    as ``values``)
+
+Remark:
+    In the Python API, the ``size`` parameter is inferred from the
+    ``values`` array and the ``coeffs`` vector is directly returned.)doc";
+
+static const char *__doc_mitsuba_fftw_transform_r2c =
+R"doc(Computes the real to complex Fourier series via FFTW. The resulting
+series will have the "Hermitian" symmetry.
+
+Parameter ``values``:
+    Input array of real function samples in [0, 2pi)
+
+Parameter ``size``:
+    Size of input array. Required to be an odd number.
+
+Parameter ``coeffs``:
+    Output array of complex Fourier series coefficients (same length
+    as ``values``)
+
+Remark:
+    In the Python API, the ``size`` parameter is inferred from the
+    ``values`` array and the ``coeffs`` vector is directly returned.)doc";
 
 static const char *__doc_mitsuba_filesystem_absolute =
 R"doc(Returns an absolute path to the same location pointed by ``p``,
@@ -7910,6 +8408,90 @@ R"doc(Changes the size of the regular file named by ``p`` as if ``truncate``
 was called. If the file was larger than ``target_length``, the
 remainder is discarded. The file must exist.)doc";
 
+static const char *__doc_mitsuba_filon_integrate_cosine =
+R"doc(Compute a Cosine series of the given sampled function by integrating
+it against the basis functions using Filon quadrature
+
+This version computes a Cosine series of a real function, thus results
+in a set of real Fourier coefficients for (l=0, ..., orders-1)
+
+Filon quadrature works by constructing a piecewise quadratic
+interpolant of the original function. The Fourier basis functions are
+then integrated against this representation, which has an analytic
+solution. This avoids all of the problems of traditional quadrature
+schemes involving highly oscillatory integrals. It is thus possible to
+obtain accurate coefficients even for high orders.
+
+Parameter ``values``:
+    Function to be integrated
+
+Parameter ``size``:
+    Desired resolution of the piecewise quadratic interpolant
+
+Parameter ``coeffs``:
+    Output buffer used to store the computed coefficients. The
+    function adds the computed coefficients to the buffer rather than
+    overwriting the existing contents.
+
+Parameter ``orders``:
+    Desired number of coefficients
+
+Parameter ``a``:
+    Start of the integration, can be set to values other than zero.
+    Note that the Cosine series basis functions are not orthogonal
+    anymore in this case.
+
+Parameter ``b``:
+    End of the integration, can be set to values other than pi. Note
+    that the Cosine series basis functions are not orthogonal anymore
+    in this case.
+
+Remark:
+    In the Python API, the ``coeffs`` array is directly returned.)doc";
+
+static const char *__doc_mitsuba_filon_integrate_exp =
+R"doc(Compute a Fourier series of the given sampled function by integrating
+it against the basis functions using Filon quadrature
+
+This version computes a Fourier series of a complex function. It
+results in a set of complex Fourier coefficients for (l=-orders/2,
+..., orders/2)
+
+Filon quadrature works by constructing a piecewise cubic spline
+interpolant of the original function. The Fourier basis functions are
+then integrated against this representation, which has an analytic
+solution. This avoids all of the problems of traditional quadrature
+schemes involving highly oscillatory intetrals. It is thus possible to
+obtain accurate coefficients even for high orders.
+
+Parameter ``values``:
+    Uniformly sampled values of the function to be integrated between
+    ``a`` and ``b``
+
+Parameter ``size``:
+    Number of function samples
+
+Parameter ``coeffs``:
+    Output buffer used to store the computed coefficients. The
+    function adds the computed coefficients to the buffer rather than
+    overwriting the existing contents.
+
+Parameter ``orders``:
+    Desired number of coefficients. Assumed to be odd.
+
+Parameter ``a``:
+    Start of the integration, can be set to values other than zero.
+    Note that the Cosine series basis functions are not orthogonal
+    anymore in this case.
+
+Parameter ``b``:
+    End of the integration, can be set to values other than pi. Note
+    that the Cosine series basis functions are not orthogonal anymore
+    in this case.
+
+Remark:
+    In the Python API, the ``coeffs`` array is directly returned.)doc";
+
 static const char *__doc_mitsuba_fresnel =
 R"doc(Calculates the unpolarized Fresnel reflection coefficient at a planar
 interface between two dielectrics
@@ -7969,6 +8551,46 @@ Parameter ``eta``:
 
 Returns:
     F, the unpolarized Fresnel coefficient.)doc";
+
+static const char *__doc_mitsuba_fresnel_fourier_series =
+R"doc(Compute a Fourier series of the Fresnel part for the Beckmann-
+distribution based anisotropic microfacet BSDF by Walter et al. Covers
+both the dielectric and conducting case. The result is a 1D Fourier
+series over phi_d, valid for all phi_s.
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``eta``:
+    Relative index of refraction (complex)
+
+Parameter ``md``:
+    Indicates a desired number of Fourier coefficients
+
+Parameter ``phi_max``:
+    The implementation minimizes the fitting error on the interval [0,
+    phi_max]. If in doubt, set phi_max = math::Pi
+
+Parameter ``svd_reg``:
+    Use old SVD based regularization. Disabled by default.
+
+Parameter ``fresnel_only``:
+    Usually, this part of the microfacet model implementation also
+    includes other low-frequency/constant normalization terms.
+    Optionally, with this flag, only Fresnel itself is evaluated.
+    (Default=false)
+
+Returns:
+    Resulting Fourier series coefficients)doc";
 
 static const char *__doc_mitsuba_fresnel_polarized =
 R"doc(Calculates the polarized Fresnel reflection coefficient at a planar
@@ -8061,6 +8683,65 @@ static const char *__doc_mitsuba_hash_combine = R"doc()doc";
 static const char *__doc_mitsuba_hasher = R"doc()doc";
 
 static const char *__doc_mitsuba_hasher_operator_call = R"doc()doc";
+
+static const char *__doc_mitsuba_henyey_greenstein =
+R"doc(Evaluate the HG model using the mu_i, mu_o, phi_d parameterization
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``phi_d``:
+    Azimuthal difference angle
+
+Parameter ``g``:
+    "Anisotropy" parameter)doc";
+
+static const char *__doc_mitsuba_henyey_greenstein_fourier_series =
+R"doc(Compute a Fourier series of the HG model
+
+This function first finds the 0-th and 1st-order Fourier coefficients
+using elliptic integrals.
+
+The other coefficients can then be determined much more efficiently;
+the approach here is based on the idea that the ratio of adjacent
+coefficients eventually converges to a constant value. Using a 2nd-
+order Taylor expansion, we can obtain a fairly accurate estimate of
+this ratio somewhere "in the middle" (i.e. for large $n$, but well
+before the aforementioned convergence).
+
+Using a backwards recurrence scheme, we can then determine all
+previous ratios and, thereby (using the explicitly computed first
+values), all Fourier coefficients.
+
+This approach is based on the article
+
+"A Recurrence Formula For Computing Fourier Components of the Henyey-
+Greenstein Phase Function" by E.G. Yanovitskij
+
+Journal of Quantitative Spectroscopy & Radiative Transfer, 57, no 1.
+1977
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``g``:
+    "Anisotropy" parameter
+
+Parameter ``md``:
+    Indicates a desired maximum number of Fourier coefficients. The
+    implementation will blur out higher Frequency content to try to
+    achieve this number.
+
+Parameter ``result``:
+    Storage for the generated Fourier coefficients)doc";
+
+static const char *__doc_mitsuba_henyey_greenstein_parameter_heuristic = R"doc(Heuristic to guess a suitable number of parameters (HG model))doc";
 
 static const char *__doc_mitsuba_ior_from_file = R"doc()doc";
 
@@ -8192,6 +8873,182 @@ static const char *__doc_mitsuba_math_sphdir = R"doc(//! @{ \name Helper functio
 static const char *__doc_mitsuba_math_ulpdiff =
 R"doc(Compare the difference in ULPs between a reference value and another
 given floating point number)doc";
+
+static const char *__doc_mitsuba_microfacet =
+R"doc(Evaluate the Beckmann distribution-based microfacet BSDF by Walter et
+al. using the mu_i, mu_o, phi_s, phi_d parameterization.
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``phi_s``:
+    Azimuthal angle sum
+
+Parameter ``phi_d``:
+    Azimuthal angle difference
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``eta``:
+    Relative index of refraction (complex)
+
+Parameter ``isotropic_g``:
+    Indicates whether an isotropic version of the shadowing-masking
+    function should be used. (Default: false))doc";
+
+static const char *__doc_mitsuba_microfacet_G =
+R"doc(Evaluate the Beckmann distribution-based microfacet BSDF by Walter et
+al. using the mu_i, mu_o, phi_s, phi_d parameterization. This version
+only contains the shadowing-masking term.
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``phi_s``:
+    Azimuthal angle sum
+
+Parameter ``phi_d``:
+    Azimuthal angle difference
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``eta``:
+    Relative index of refraction (complex)
+
+Parameter ``isotropic_g``:
+    Indicates whether an isotropic version of the shadowing-masking
+    function should be used. (Default: false))doc";
+
+static const char *__doc_mitsuba_microfacet_exp =
+R"doc(Evaluate the Beckmann distribution-based microfacet BSDF by Walter et
+al. using the mu_i, mu_o, phi_s, phi_d parameterization. This version
+only contains the exponential term.
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``phi_s``:
+    Azimuthal angle sum
+
+Parameter ``phi_d``:
+    Azimuthal angle difference
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``eta``:
+    Relative index of refraction (complex))doc";
+
+static const char *__doc_mitsuba_microfacet_fourier_series =
+R"doc(Compute a 2D Fourier series of the Beckmann-distribution based
+microfacet BSDF by Walter et al. Covers both the dielectric and
+conducting case.
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``eta``:
+    Relative index of refraction (complex)
+
+Parameter ``ms``:
+    Indicates a desired number of Fourier coefficients for first
+    dimension (phi_s)
+
+Parameter ``md``:
+    Indicates a desired number of Fourier coefficients for second
+    dimension (phi_d) The implementation will blur out higher
+    Frequency content to try to achieve this number.
+
+Parameter ``relerr``:
+    A relative error threshold after which series terms can safely be
+    truncated
+
+Parameter ``result``:
+    Storage for the generated Fourier coefficients
+
+Parameter ``component``:
+    Indicates whether which component should be considered: The full
+    model (default, 0), exponential (1), shadowing-masking (2),
+    Fresnel (3)
+
+Parameter ``n_samples_phi_s``:
+    Number of samples to use for the Filon integration along phi_s.
+
+Remark:
+    In the Python API, the \result output parameter is directly
+    returned)doc";
+
+static const char *__doc_mitsuba_microfacet_fresnel =
+R"doc(Evaluate the Beckmann distribution-based microfacet BSDF by Walter et
+al. using the mu_i, mu_o, phi_s, phi_d parameterization. This version
+only contains the "remainder" component, i.e. Fresnel and some
+normalization terms.
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``phi_s``:
+    Azimuthal angle sum
+
+Parameter ``phi_d``:
+    Azimuthal angle difference
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``eta``:
+    Relative index of refraction (complex)
+
+Parameter ``fresnel_only``:
+    Usually, this part of the microfacet model implementation also
+    includes other low-frequency/constant normalization terms.
+    Optionally, with this flag, only Fresnel itself is evaluated.
+    (Default=false))doc";
+
+static const char *__doc_mitsuba_microfacet_inside_lowfreq_interval = R"doc()doc";
+
+static const char *__doc_mitsuba_microfacet_parameter_heuristic = R"doc(Heuristic to guess a suitable number of parameters (Microfacet model))doc";
+
+static const char *__doc_mitsuba_microfacet_reflection_exp_coeffs = R"doc()doc";
+
+static const char *__doc_mitsuba_microfacet_refraction_exp_coeffs = R"doc()doc";
+
+static const char *__doc_mitsuba_mmul = R"doc()doc";
 
 static const char *__doc_mitsuba_mueller_absorber =
 R"doc(Constructs the Mueller matrix of an ideal absorber
@@ -8715,6 +9572,18 @@ static const char *__doc_mitsuba_pdf_uniform_spectrum_2 = R"doc()doc";
 
 static const char *__doc_mitsuba_profiler_flags = R"doc()doc";
 
+static const char *__doc_mitsuba_project_roughness =
+R"doc(Compute the effective roughness for an anisotropic microfacet model
+
+Parameter ``v``:
+    Direction
+
+Parameter ``alpha_u``:
+    Roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Roughness parameter in V direction)doc";
+
 static const char *__doc_mitsuba_quad_composite_simpson =
 R"doc(Computes the nodes and weights of a composite Simpson quadrature rule
 with the given number of evaluations.
@@ -9007,6 +9876,47 @@ Parameter ``si``:
     A surface intersection record (usually on an emitter).
 
 \note Defined in scene.h)doc";
+
+static const char *__doc_mitsuba_smith_G1 =
+R"doc(Smith's 1D shadowing masking term for the Beckmann microfacet
+distribution
+
+Parameter ``v``:
+    Incident direction
+
+Parameter ``m``:
+    Microsurface normal
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction)doc";
+
+static const char *__doc_mitsuba_smith_G1_fourier_series =
+R"doc(Compute a Fourier series of the Smith G1 function along either
+incident or outgoing azimuth angle phi. Can be (diagonally) convolved
+against an existing phi_s / phi_d Fourier series to model
+multiplication with the smith G2 Shadowing-Masking component.
+
+Parameter ``mu``:
+    Either incident or outgoing zenith angle cosine
+
+Parameter ``alpha_u``:
+    Beckmann roughness parameter in U direction
+
+Parameter ``alpha_v``:
+    Beckmann roughness parameter in V direction
+
+Parameter ``m``:
+    Indicates a desired number of Fourier coefficients
+
+Parameter ``n_samples``:
+    Indicates a desired number of function samples to be used for
+    Filon integration
+
+Returns:
+    Resulting Fourier series coefficients)doc";
 
 static const char *__doc_mitsuba_spectrum_from_file = R"doc()doc";
 
@@ -9589,6 +10499,40 @@ static const char *__doc_mitsuba_variant_variant_3 = R"doc()doc";
 
 static const char *__doc_mitsuba_variant_visit = R"doc()doc";
 
+static const char *__doc_mitsuba_von_mises_fisher =
+R"doc(Evaluate the von Mises-Fisher model using the mu_i, mu_o, phi_d
+parameterization
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``phi_d``:
+    Azimuthal difference angle
+
+Parameter ``kappa``:
+    "Anisotropy" parameter)doc";
+
+static const char *__doc_mitsuba_von_mises_fisher_fourier_series =
+R"doc(Compute a Fourier series of the von Mises-Fisher model
+
+Parameter ``mu_o``:
+    Exitant zenith angle cosine
+
+Parameter ``mu_i``:
+    Incident zenith angle cosine
+
+Parameter ``kappa``:
+    "Anisotropy" parameter
+
+Parameter ``relerr``:
+    Relative error goal
+
+Parameter ``result``:
+    Storage for the generated Fourier coefficients)doc";
+
 static const char *__doc_mitsuba_warp_beckmann_to_square = R"doc(Inverse of the mapping square_to_uniform_cone)doc";
 
 static const char *__doc_mitsuba_warp_bilinear_to_square = R"doc(Inverse of square_to_bilinear)doc";
@@ -9792,6 +10736,10 @@ static const char *__doc_zmq_dump = R"doc()doc";
 
 static const char *__doc_zmq_envelope = R"doc()doc";
 
+static const char *__doc_zmq_envelope_2 = R"doc()doc";
+
+static const char *__doc_zmq_envelope_envelope = R"doc()doc";
+
 static const char *__doc_zmq_exception = R"doc()doc";
 
 static const char *__doc_zmq_exception_exception = R"doc()doc";
@@ -9854,6 +10802,10 @@ static const char *__doc_zmq_poll = R"doc()doc";
 
 static const char *__doc_zmq_poll_2 = R"doc()doc";
 
+static const char *__doc_zmq_poll_3 = R"doc()doc";
+
+static const char *__doc_zmq_poll_4 = R"doc()doc";
+
 static const char *__doc_zmq_poll_flags = R"doc()doc";
 
 static const char *__doc_zmq_poll_flags_pollin = R"doc()doc";
@@ -9882,6 +10834,8 @@ static const char *__doc_zmq_socket_connect_2 = R"doc()doc";
 
 static const char *__doc_zmq_socket_connected = R"doc()doc";
 
+static const char *__doc_zmq_socket_discard_remainder = R"doc(Gobble up the rest of a (partial) message and throw an exception)doc";
+
 static const char *__doc_zmq_socket_disconnect = R"doc()doc";
 
 static const char *__doc_zmq_socket_disconnect_2 = R"doc()doc";
@@ -9889,6 +10843,8 @@ static const char *__doc_zmq_socket_disconnect_2 = R"doc()doc";
 static const char *__doc_zmq_socket_getsockopt = R"doc()doc";
 
 static const char *__doc_zmq_socket_getsockopt_2 = R"doc()doc";
+
+static const char *__doc_zmq_socket_init = R"doc()doc";
 
 static const char *__doc_zmq_socket_more = R"doc()doc";
 
@@ -9902,7 +10858,29 @@ static const char *__doc_zmq_socket_operator_void = R"doc()doc";
 
 static const char *__doc_zmq_socket_ptr = R"doc()doc";
 
+static const char *__doc_zmq_socket_recv = R"doc()doc";
+
+static const char *__doc_zmq_socket_recv_2 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recv_3 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recv_4 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recv_5 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recv_6 = R"doc()doc";
+
 static const char *__doc_zmq_socket_recvmore = R"doc()doc";
+
+static const char *__doc_zmq_socket_recvmore_2 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recvmore_3 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recvmore_4 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recvmore_5 = R"doc()doc";
+
+static const char *__doc_zmq_socket_recvmore_6 = R"doc()doc";
 
 static const char *__doc_zmq_socket_send = R"doc()doc";
 
@@ -9916,6 +10894,8 @@ static const char *__doc_zmq_socket_send_5 = R"doc()doc";
 
 static const char *__doc_zmq_socket_send_6 = R"doc()doc";
 
+static const char *__doc_zmq_socket_send_7 = R"doc()doc";
+
 static const char *__doc_zmq_socket_sendmore = R"doc()doc";
 
 static const char *__doc_zmq_socket_sendmore_2 = R"doc()doc";
@@ -9928,6 +10908,8 @@ static const char *__doc_zmq_socket_sendmore_5 = R"doc()doc";
 
 static const char *__doc_zmq_socket_sendmore_6 = R"doc()doc";
 
+static const char *__doc_zmq_socket_sendmore_7 = R"doc()doc";
+
 static const char *__doc_zmq_socket_setsockopt = R"doc()doc";
 
 static const char *__doc_zmq_socket_setsockopt_2 = R"doc()doc";
@@ -9937,6 +10919,8 @@ static const char *__doc_zmq_socket_socket = R"doc()doc";
 static const char *__doc_zmq_socket_socket_2 = R"doc()doc";
 
 static const char *__doc_zmq_socket_socket_3 = R"doc()doc";
+
+static const char *__doc_zmq_socket_socket_4 = R"doc()doc";
 
 static const char *__doc_zmq_socket_type = R"doc()doc";
 
@@ -9965,6 +10949,8 @@ static const char *__doc_zmq_socket_type_xsub = R"doc()doc";
 static const char *__doc_zmq_socket_unbind = R"doc()doc";
 
 static const char *__doc_zmq_socket_unbind_2 = R"doc()doc";
+
+static const char *__doc_zmq_version = R"doc()doc";
 
 static const char *__doc_zmq_zmq_check = R"doc()doc";
 

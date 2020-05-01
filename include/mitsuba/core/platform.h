@@ -30,6 +30,7 @@
 #define MTS_MODULE_CORE   1
 #define MTS_MODULE_RENDER 2
 #define MTS_MODULE_UI     3
+#define MTS_MODULE_LAYER  4
 
 #if MTS_BUILD_MODULE == MTS_MODULE_CORE
 #  define MTS_EXPORT_CORE MTS_EXPORT
@@ -59,6 +60,18 @@
 #  define MTS_EXPORT_UI MTS_EXPORT
 #else
 #  define MTS_EXPORT_UI MTS_IMPORT
+#endif
+
+#if MTS_BUILD_MODULE == MTS_MODULE_LAYER
+#  define MTS_EXPORT_LAYER MTS_EXPORT
+#  define MTS_EXTERN_LAYER extern
+#else
+#  define MTS_EXPORT_LAYER MTS_IMPORT
+#  if defined(_MSC_VER)
+#    define MTS_EXTERN_LAYER
+#  else
+#    define MTS_EXTERN_LAYER extern
+#  endif
 #endif
 
 /* A few macro helpers to enable overloading macros based on the number of parameters */

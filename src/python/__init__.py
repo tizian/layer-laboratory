@@ -11,6 +11,7 @@ if sys.version_info < (3, 6):
 try:
     _import('mitsuba.core_ext')
     _import('mitsuba.render_ext')
+    _import('mitsuba.layer_ext')
     _tls = threading.local()
 except ImportError as e:
     from .config import PYTHON_EXECUTABLE
@@ -111,13 +112,13 @@ class MitsubaModule(types.ModuleType):
 
 # Register the modules and submodules
 for name in ['core', 'render', 'core.xml', 'core.warp', 'core.math',
-             'core.spline', 'render.mueller']:
+             'core.spline', 'render.mueller', 'layer']:
     name = 'mitsuba.' + name
     sys.modules[name] = MitsubaModule(name)
 
 core = sys.modules['mitsuba.core']
 render = sys.modules['mitsuba.render']
-
+layer = sys.modules['mitsuba.layer']
 
 def set_variant(value):
     '''
@@ -161,7 +162,9 @@ def set_variant(value):
             'mitsuba.core': (_import('mitsuba.core_ext'),
                              _import('mitsuba.core_' + value + '_ext')),
             'mitsuba.render': (_import('mitsuba.render_ext'),
-                               _import('mitsuba.render_' + value + '_ext'))
+                               _import('mitsuba.render_' + value + '_ext')),
+            'mitsuba.layer': (_import('mitsuba.layer_ext'),
+                              _import('mitsuba.layer_' + value + '_ext'))
         }
     except ImportError as e:
         if not str(e).startswith('No module named'):
