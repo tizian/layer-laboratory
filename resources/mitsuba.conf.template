@@ -70,14 +70,13 @@
 
     "enabled": [
         # The "scalar_rgb" variant *must* be included at the moment.
-        "scalar_rgb",
-        "scalar_spectral"
+        "scalar_rgb"
     ],
 
     # If mitsuba is launched without any specific mode parameter,
     # the configuration below will be used by default
 
-    "default": "scalar_spectral",
+    "default": "scalar_rgb",
 
     # The variant below will automatically be set when importing the Python
     # mitsuba module. If the value is "", the desired variant will need to be

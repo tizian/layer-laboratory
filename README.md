@@ -14,6 +14,11 @@ The normal compilation instructions for Mitsuba 2 apply. See the ["Getting start
 ```
 brew install suite-sparse
 ```
+and Ubuntu with:
+```
+apt install libsuitesparse-dev
+```
+
 * The [sparseqr](https://pypi.org/project/sparseqr/) Python package is needed for the layer subtraction experiments. It can be installed with
 ```
 pip install sparseqr
