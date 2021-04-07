@@ -39,4 +39,4 @@
     url = https://github.com/wjakob/embree
 [submodule "ext/eigen"]
 	path = ext/eigen
-	url = git@github.com:libigl/eigen.git
+	url = https://github.com/libigl/eigen
