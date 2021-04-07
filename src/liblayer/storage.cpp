@@ -5,6 +5,7 @@
 #include <mitsuba/core/filesystem.h>
 #include <tbb/tbb.h>
 #include <fstream>
+#include <atomic>
 
 NAMESPACE_BEGIN(mitsuba)
 

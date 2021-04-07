@@ -8,6 +8,7 @@
 #include <Eigen/LU>
 #include <cmath>
 #include <chrono>
+#include <atomic>
 
 using namespace std::chrono;
 

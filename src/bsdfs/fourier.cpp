@@ -56,7 +56,7 @@ public:
         Float phi_d = phi_o - phi_i;
         Float sin_theta_2_o = max(0, 1 - mu_o*mu_o);
         Float norm = sqrt(sin_theta_2_o / Frame3f::sin_theta_2(si.wi));
-        masked(norm, isinf(norm)) = 0;
+        masked(norm, enoki::isinf(norm)) = 0;
 
         auto [sin_phi_d, cos_phi_d] = sincos(phi_d);
         bs.wo = -normalize(Vector3f(norm * (cos_phi_d * si.wi.x() - sin_phi_d * si.wi.y()),
